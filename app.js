@@ -1,18 +1,26 @@
 const fs = require('fs');
-console.log(process.argv[2]);
+
+// Get argument after running app for new project folder name
 const dirName = process.argv[2] + '/';
 
+// Create folder if it doesn't already exist
 if (!fs.existsSync(dirName)) {
   fs.mkdirSync(dirName);
 }
 
+// Set default file names
+const htmlFileName = 'index.html';
+const cssFileName = 'style.css';
+const jsFileName = 'script.js';
+
+// Set default file contents
 const htmlDefault = `<html>
 <head>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="${cssFileName}">
 </head>
 <body>
   <h1>Web Development BoilerPlate</h1>
-  <script src="script.js" />
+  <script src="${jsFileName}" />
 </body>
 </html>`;
 
@@ -35,6 +43,6 @@ const createFile = (fileName, defaultFile, fileType) => {
   });
 };
 
-createFile(dirName + 'index.html', htmlDefault, 'html');
-createFile(dirName + 'styles.css', cssDefault, 'css');
-createFile(dirName + 'script.js', jsDefault, 'javascript');
+createFile(dirName + htmlFileName, htmlDefault, 'html');
+createFile(dirName + cssFileName, cssDefault, 'css');
+createFile(dirName + jsFileName, jsDefault, 'javascript');
