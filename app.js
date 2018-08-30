@@ -34,15 +34,22 @@ body {
 
 const jsDefault = `alert("Boiler plate is working!")`;
 
-const createFile = (fileName, defaultFile, fileType) => {
+const createFile = (fileName, defaultFile, fileType, callback) => {
   fs.writeFile(fileName, defaultFile, err => {
     if (err) {
       return console.log(err);
     }
-    console.log(`Your ${fileType} file was created`);
+    console.log(`Your ${fileType} file was created ☑️`);
+    callback();
   });
 };
 
-createFile(dirName + htmlFileName, htmlDefault, 'html');
-createFile(dirName + cssFileName, cssDefault, 'css');
-createFile(dirName + jsFileName, jsDefault, 'javascript');
+console.log('Building JsBoilerPlate......\n.....................');
+
+createFile(dirName + htmlFileName, htmlDefault, 'html', () => {
+  createFile(dirName + cssFileName, cssDefault, 'css', () => {
+    createFile(dirName + jsFileName, jsDefault, 'javascript', () => {
+      console.log('.....................\nTask Completed!');
+    });
+  });
+});
