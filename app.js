@@ -1,7 +1,8 @@
+// node app.js [optional folder name]
 const fs = require('fs');
 
 // Get argument after running app for new project folder name
-const dirName = process.argv[2] + '/';
+const dirName = process.argv[2] ? process.argv[2] + '/' : 'jsBoiler/';
 
 // Create folder if it doesn't already exist
 if (!fs.existsSync(dirName)) {
