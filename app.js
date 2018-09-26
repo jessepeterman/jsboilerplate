@@ -1,7 +1,7 @@
 // node app.js [optional folder name]
 const fs = require('fs');
 
-// Get argument after running app for new project folder name
+// Get argument after running app for new project folder name or set default
 const dirName = process.argv[2] ? process.argv[2] + '/' : 'jsBoiler/';
 
 // Create folder if it doesn't already exist
@@ -27,7 +27,7 @@ const htmlDefault = `<html>
 
 const cssDefault = `
 body {
-  background-color: rgb(209, 207, 70);
+  background-color: rgb(225, 225, 225);
   font-family: Arial, Helvetica, sans-serif;
   width: 100wh;
   text-align: center;
@@ -35,22 +35,40 @@ body {
 
 const jsDefault = `alert("Boiler plate is working!")`;
 
-const createFile = (fileName, defaultFile, fileType, callback) => {
+const createFile = async (fileName, defaultFile, fileType) => {
   fs.writeFile(fileName, defaultFile, err => {
     if (err) {
       return console.log(err);
     }
     console.log(`Your ${fileType} file was created ☑️`);
-    callback();
   });
+  return new Promise(resolve => {
+    console.log('completed...');
+    resolve();
+  })
 };
 
-console.log('Building JsBoilerPlate......\n.....................');
+const createBoilerPlate = async () => {
+  console.log('\nBuilding JsBoilerPlate...........................');
+  try {
+    const one = await createFile(dirName + htmlFileName, htmlDefault, 'html');
+    const two = await createFile(dirName + cssFileName, cssDefault, 'css');
+    const three = createFile(dirName + jsFileName, jsDefault, 'javascript');
+    console.log('.....................\nTask Completed!');
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
 
-createFile(dirName + htmlFileName, htmlDefault, 'html', () => {
-  createFile(dirName + cssFileName, cssDefault, 'css', () => {
-    createFile(dirName + jsFileName, jsDefault, 'javascript', () => {
-      console.log('.....................\nTask Completed!');
-    });
-  });
-});
+createBoilerPlate();
+
+// createFile(dirName + htmlFileName, htmlDefault, 'html', () => {
+//   createFile(dirName + cssFileName, cssDefault, 'css', () => {
+//     createFile(dirName + jsFileName, jsDefault, 'javascript', () => {
+//       console.log('.....................\nTask Completed!');
+//     });
+//   });
+// });
+
+
