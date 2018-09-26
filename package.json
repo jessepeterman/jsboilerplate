@@ -4,8 +4,7 @@
   "description": "A basic HTML, CSS, and JS boilerplate already connected.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node node_modules/web-dev-boilerplate/app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
