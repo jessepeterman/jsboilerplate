@@ -1,0 +1,27 @@
+{
+  "name": "web-dev-boilerplate",
+  "version": "1.0.1",
+  "description": "A basic HTML, CSS, and JS boilerplate already connected.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node node_modules/web-dev-boilerplate/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessepeterman/jsboilerplate.git"
+  },
+  "keywords": [
+    "boilerplate",
+    "js",
+    "javascript",
+    "web",
+    "development"
+  ],
+  "author": "Jesse Peterman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessepeterman/jsboilerplate/issues"
+  },
+  "homepage": "https://github.com/jessepeterman/jsboilerplate#readme"
+}
